@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+:root {
+    --bg-dark: #1e1e22;
+    /* Mat Titanyum / Karbon Gri arka plan */
+    --bg-card: #22242b;
+    /* Arka plana çok yakın, hafif mavi-gri yansımalı antrasit kart rengi */
+    --border-color: rgba(255, 255, 255, 0.05);
+    /* Çok hafif, sade kenarlık */
+    --primary-accent: #06b6d4;
+    /* Maviye yakın şık turkuaz (Cyan 500) */
+    --primary-hover: #0891b2;
+    /* Maviye yakın koyu turkuaz (Cyan 600) */
+    --text-main: #f4f4f5;
+    /* Kırık beyaz */
+    --text-muted: #94a3b8;
+    /* Mat gri */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    background-image: none;
+    /* Düz, temiz ve yormayan mat titanyum arka plan */
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* Hareketli balonları tamamen gizliyoruz */
+.background-blobs {
+    display: none;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    /* Çoklu arka plan ile kartın tamamına yayılan, antrasiti öldürmeyen pürüzsüz derin mavi filtre katmanı */
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.08) 0%, rgba(18, 30, 51, 0.28) 100%), var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    width: 100%;
+    max-width: 460px;
+    box-shadow:
+        0 20px 40px -10px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.12) 0%, rgba(18, 30, 51, 0.35) 100%), var(--bg-card);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+p.subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+
+.form-group:focus-within label {
+    color: var(--primary-accent);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    background: #17191e;
+    /* Kartla mükemmel uyumlu, çok koyu mat gri-mavi kutular */
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    background: #101216;
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+input::placeholder {
+    color: rgba(161, 161, 170, 0.4);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+select option {
+    background-color: #17191e;
+    color: var(--text-main);
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 1.1rem;
+    margin-top: 1.5rem;
+    background: var(--primary-accent);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 3px 10px rgba(6, 182, 212, 0.15);
+    transform-origin: center;
+}
+
+.submit-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.012);
+    /* Ultra hafif, asil bir büyüme */
+    box-shadow: 0 5px 14px rgba(6, 182, 212, 0.22);
+    /* Kompakt ve derli toplu gölge yayılımı */
+}
+
+.submit-btn:active {
+    transform: scale(0.988);
+    /* Ultra hafif basılma etkisi */
+    box-shadow: 0 2px 6px rgba(6, 182, 212, 0.12);
+}
+
+.result-container {
+    margin-top: 1.5rem;
+    padding: 2.2rem 1.5rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-title {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.result-genre {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--primary-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.emoji {
+    font-size: 2.2rem;
+}

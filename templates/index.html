@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka Film Öneri Sistemi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <h1>Ne İzlesem?</h1>
+        <p class="subtitle">Yapay Zeka Destekli Film Öneri Asistanı</p>
+
+        <form method="POST" action="/result">
+            <div class="form-group">
+                <label for="yas">Yaşınız</label>
+                <input type="number" id="yas" name="yas" placeholder="Örn: 25" required min="1" max="100">
+            </div>
+
+            <div class="form-group">
+                <label for="sure">Önceki izleme süreniz? (Dakika)</label>
+                <input type="number" id="sure" name="sure" placeholder="Örn: 120" required min="1" max="200">
+            </div>
+
+            <div class="form-group">
+                <label for="puan">Önceki film beğeniniz? (1-10)</label>
+                <input type="number" id="puan" name="puan" placeholder="Örn: 7" required min="1" max="10" step="1">
+            </div>
+
+            <div class="form-group">
+                <label for="onceki_tur">En son izlediğiniz tür</label>
+                <select id="onceki_tur" name="onceki_tur" required>
+                    <option value="" disabled selected>Tür seçin...</option>
+                    <option value="1">Aksiyon</option>
+                    <option value="2">Dram</option>
+                    <option value="3">Komedi</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Film Öner</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

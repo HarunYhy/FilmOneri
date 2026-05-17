@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öneri Sonucu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container" style="text-align: center;">
+        {% if hata %}
+        <div class="result-title" style="color: #ff6b6b;">Uyarı</div>
+        <div class="result-genre"
+            style="font-size: 1.5rem; line-height: 1.5; background: none; color: white; -webkit-text-fill-color: white;">
+            {{ hata }}
+            <br><span class="emoji" style="margin-top: 1rem;">🚫</span>
+        </div>
+        {% else %}
+        <div class="result-title">Senin İçin Seçtiğimiz Tür</div>
+        <div class="result-genre">
+            {{ tavsiye }}
+            {% if tavsiye|lower == 'aksiyon' %}
+            <span class="emoji">🎬🔥</span>
+            {% elif tavsiye|lower == 'dram' %}
+            <span class="emoji">🎭😢</span>
+            {% elif tavsiye|lower == 'komedi' %}
+            <span class="emoji">😂🍿</span>
+            {% else %}
+            <span class="emoji">✨</span>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <a href="/" class="submit-btn" style="margin-top: 2rem;">Yeniden Sorgula</a>
+    </div>
+
+</body>
+
+</html>

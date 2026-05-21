@@ -19,7 +19,7 @@ def result():
         hata_mesaji = "Maalesef 18 yaş altı için eğitilmiş verimiz bulunmamaktadır."
         return render_template("result.html", hata=hata_mesaji)
         
-    # Modele gönderilecek veriyi DataFrame olarak hazırlıyoruz
+
     input_data = pd.DataFrame([[yas, sure, puan, onceki_tur]], 
                               columns=["yas", "sure", "puan", "oncekiTur"])
     

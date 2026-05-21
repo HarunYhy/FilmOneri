@@ -21,7 +21,7 @@ except FileNotFoundError:
     exit()
 
 hedef_satir = 3000
-np.random.seed(42)  # Sonuçların her çalışmada aynı kalması için
+np.random.seed(42)
 
 sentetik_yas = np.random.randint(
     df_orjinal["yas"].min(), df_orjinal["yas"].max() + 1, hedef_satir
@@ -35,7 +35,6 @@ sentetik_puan = np.random.randint(
 
 sentetik_onceki = np.random.choice([1, 2, 3], size=hedef_satir)
 
-# Eşleştirme sözlükleri ve listeleri
 tur_map = {1: "aksiyon", 2: "dram", 3: "komedi"}
 tum_turler = ["aksiyon", "dram", "komedi"]
 
@@ -75,7 +74,7 @@ for i in range(hedef_satir):
             onerilen = farkliTurOner()
 
         elif 5 <= puan < 8:
-            if np.random.rand() < 0.8:
+            if np.random.rand() < 0.6:
                 onerilen = onceki_metin  
             else:
                 onerilen = yas_egilimi

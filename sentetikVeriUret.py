@@ -77,7 +77,7 @@ for i in range(hedef_satir):
             if np.random.rand() < 0.6:
                 onerilen = onceki_metin  
             else:
-                onerilen = yas_egilimi
+                onerilen = farkliTurOner()
         else:
             onerilen = onceki_metin
 

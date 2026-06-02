@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öneri Geçmişi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .history-table th, .history-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: left;
+        }
+        .history-table th {
+            font-weight: 600;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container" style="max-width: 800px;">
+        <h1>Geçmiş Öneriler</h1>
+        
+        <div style="overflow-x: auto;">
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Yaş</th>
+                        <th>Süre</th>
+                        <th>Puan</th>
+                        <th>Tür</th>
+                        <th>Tavsiye</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        <td>{{ row.timestamp.split('.')[0] if row.timestamp else '' }}</td>
+                        <td>{{ row.yas }}</td>
+                        <td>{{ row.sure }}</td>
+                        <td>{{ row.puan }}</td>
+                        <td>
+                            {% if row.onceki_tur == 1 %}Aksiyon
+                            {% elif row.onceki_tur == 2 %}Dram
+                            {% elif row.onceki_tur == 3 %}Komedi
+                            {% else %}{{ row.onceki_tur }}
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ row.tavsiye }}</strong></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align: center;">Henüz geçmiş veri bulunmamaktadır.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <a href="/" class="btn">Ana Sayfaya Dön</a>
+    </div>
+
+</body>
+
+</html>

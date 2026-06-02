@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import joblib
 
 df = pd.read_csv("sentetik_film_verisi.csv")
@@ -29,6 +29,15 @@ print("Gercek etiketler:")
 print(list(y_test)[:10])
 
 print("Accuracy:", accuracy)
+
+conf_matrix = confusion_matrix(y_test, tahminler)
+class_report = classification_report(y_test, tahminler)
+
+print("\n--- Model Performans Özeti ---")
+print("Confusion Matrix:")
+print(conf_matrix)
+print("\nClassification Report:")
+print(class_report)
 
 joblib.dump(model, "filmOneri.pkl")
 

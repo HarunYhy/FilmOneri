@@ -24,13 +24,13 @@ hedef_satir = 3000
 np.random.seed(42)
 
 sentetik_yas = np.random.randint(
-    df_orjinal["yas"].min(), df_orjinal["yas"].max() + 1, hedef_satir
+    18, 90 + 1, hedef_satir
 )
 sentetik_sure = np.random.randint(
-    df_orjinal["sure"].min(), df_orjinal["sure"].max() + 1, hedef_satir
+    0, 200 + 1, hedef_satir
 )
 sentetik_puan = np.random.randint(
-    df_orjinal["puan"].min(), df_orjinal["puan"].max() + 1, hedef_satir
+    1, 10 + 1, hedef_satir
 )
 
 sentetik_onceki = np.random.choice([1, 2, 3], size=hedef_satir)
